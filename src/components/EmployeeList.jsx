@@ -11,7 +11,7 @@ const EmployeeList = ({ employees, listEmployees }) => {
     <div>
       <h1>Employees</h1>
       <ul>
-        {employees.data.map((employee) => (
+        {employees.data?.map((employee) => (
           <li key={employee.id}>{employee.first_name}</li>
         ))}
       </ul>
