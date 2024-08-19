@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import employeeReducer from "./employee/reducers";
 
 const initialState = {
   posts: [],
@@ -15,6 +16,7 @@ const postReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
   posts: postReducer,
+  employees: employeeReducer,
 });
 
 export default rootReducer;
