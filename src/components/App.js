@@ -11,7 +11,7 @@ function App() {
     // <div className="App">
     <AuthProvider>
       <Router>
-        <Header >
+        <Header>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/employees" element={<EmployeesPage />} />

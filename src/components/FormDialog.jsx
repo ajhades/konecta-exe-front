@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -6,11 +6,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function FormDialog({ form, onSubmitForm }) {
-  const [open, setOpen] = React.useState(false);
+export default function FormDialog({ form, data, onSubmitForm }) {
+  const [open, setOpen] = useState(false);
 
-  const [name, setName] = React.useState("");
-  const [label, setLabel] = React.useState("");
+  const [name, setName] = useState("");
+  const [label, setLabel] = useState("");
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,8 +23,8 @@ export default function FormDialog({ form, onSubmitForm }) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
+      <Button variant="contained" size="small" onClick={handleClickOpen}>
+        Editar
       </Button>
       <Dialog
         open={open}
@@ -47,10 +48,10 @@ export default function FormDialog({ form, onSubmitForm }) {
             autoFocus
             required
             margin="dense"
-            id={form.name}
-            name={form.name}
-            label={form.name}
-            value={name}
+            id={form[0].name}
+            name={form[0].name}
+            label={form[0].label}
+            value={data[form[0].name]}
             onChange={(e) => setName(e.target.value)}
             type="text"
             fullWidth
@@ -60,10 +61,10 @@ export default function FormDialog({ form, onSubmitForm }) {
             autoFocus
             required
             margin="dense"
-            id={form.label}
-            name={form.label}
-            label={form.label}
-            value={label}
+            id={form[1].name}
+            name={form[1].name}
+            label={form[1].label}
+            value={data[form[1].name]}
             onChange={(e) => setLabel(e.target.value)}
             type="text"
             fullWidth

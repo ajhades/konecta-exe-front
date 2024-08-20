@@ -1,16 +1,17 @@
 import { LOGIN_USER, LOGIN_FAILURE, LOGOUT_USER } from "./types";
 
-const initialState = {
+/* const initialState = {
   error: null,
   user: null,
-};
+}; */
+const initialState = [];
 
 function userReducer(user = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
     case LOGIN_USER:
-      return { ...user, user: payload.user };
+      return { ...user, ...payload.user };
 
     case LOGIN_FAILURE:
       return {
@@ -18,10 +19,7 @@ function userReducer(user = initialState, action) {
         error: action.payload,
       };
     case LOGOUT_USER:
-      return {
-        user: null,
-        error: null,
-      };
+      return [];
 
     default:
       return user;
