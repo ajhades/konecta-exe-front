@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import employeeReducer from "./employee/reducers";
 import applicationReducer from "./application/reducers";
+import userReducer from "./user/reducers";
 
 const initialState = {
   posts: [],
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   posts: postReducer,
   employees: employeeReducer,
   applications: applicationReducer,
+  user: userReducer,
 });
 
 export default rootReducer;
