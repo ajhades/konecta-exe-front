@@ -4,8 +4,22 @@ import { PaginationProvider } from "../context/PaginationContext";
 import PaginatedTable from "./PaginatedTable";
 import PaginationControls from "./PaginationControls";
 import { listEmployees } from '../redux/employee/actions';
+import BasicTable from './MuiTable';
+import FormDialog from './FormDialog';
+
+const formEmployees = {
+  name: 'Name', label: 'Lastname'
+}
 
 const EmployeeList = ({ employees, listEmployees }) => {
+
+
+  const handleSubmitData = (data) => {
+    /**Aqui haces el llamado a la api con el json del formulario del modal */
+    console.log(data)
+  }
+  
+
   useEffect(() => {
     listEmployees();
   }, [listEmployees]);
@@ -19,9 +33,11 @@ const EmployeeList = ({ employees, listEmployees }) => {
 
   return (
     <PaginationProvider data={employees} rowsPerPage={2} fields={employeeFields} model={model}>
-      <h1>Employee List</h1>
-      <PaginatedTable />
+
+      <BasicTable />
+      { /* <PaginatedTable /> */}
       <PaginationControls />
+      <FormDialog form={formEmployees} onSubmitForm={(data) => handleSubmitData(data)} />
     </PaginationProvider>
   );
 };

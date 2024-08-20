@@ -4,9 +4,20 @@ import { listApplications } from '../redux/application/actions';
 import PaginatedTable from './PaginatedTable';
 import { PaginationProvider } from '../context/PaginationContext';
 import PaginationControls from './PaginationControls';
+import BasicTable from './MuiTable';
+import FormDialog from './FormDialog';
 
+const formApplications = {
+  name: 'Code', label: 'Summary'
+}
 
 const ApplicationList = ({ applications, listApplications }) => {
+
+  const handleSubmitData = (data) => {
+    /**Aqui haces el llamado a la api con el json del formulario del modal */
+    console.log(data)
+  }
+  
   useEffect(() => {
     listApplications();
   }, [listApplications]);
@@ -21,8 +32,9 @@ const ApplicationList = ({ applications, listApplications }) => {
 
   return (
     <PaginationProvider data={applications} rowsPerPage={2} fields={applicationFields} model={model}>
-      <h1>Application List</h1>
-      <PaginatedTable />
+     
+      <BasicTable />
+      <FormDialog form={formApplications} onSubmitForm={(data) => handleSubmitData(data)} />
       <PaginationControls />
     </PaginationProvider>
   );

@@ -22,7 +22,6 @@ const EmployeesPage = () => {
     <div>
       <h2>Employees</h2>
       <EmployeeList />
-      <button onClick={logout}>Logout</button>
     </div>
   );
 };
