@@ -21,14 +21,6 @@ const EmployeeList = ({ employees, listEmployees }) => {
       <PaginatedTable />
       <PaginationControls />
     </PaginationProvider>
-    // <div>
-    //   <h1>Employees</h1>
-    //   <ul>
-    //     {employees.data?.map((employee) => (
-    //       <li key={employee.id}>{employee.first_name}</li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 };
 

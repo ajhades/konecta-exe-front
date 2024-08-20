@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { listApplications } from '../redux/application/actions';
+import PaginatedTable from './PaginatedTable';
+import { PaginationProvider } from '../context/PaginationContext';
+import PaginationControls from './PaginationControls';
+
 
 const ApplicationList = ({ applications, listApplications }) => {
   useEffect(() => {
@@ -8,15 +12,17 @@ const ApplicationList = ({ applications, listApplications }) => {
   }, [listApplications]);
   console.log(applications, listApplications);
 
+  const applicationFields = [
+    { name: 'code', label: 'Codigo'},
+    { name: 'resume', label: 'Resumen'}
+  ];
+
   return (
-    <div>
-      <h1>Applications</h1>
-      <ul>
-        {applications.data?.map((application) => (
-          <li key={application.id}>{application.code}</li>
-        ))}
-      </ul>
-    </div>
+    <PaginationProvider data={applications.data} rowsPerPage={2} fields={applicationFields}>
+      <h1>Application List</h1>
+      <PaginatedTable />
+      <PaginationControls />
+    </PaginationProvider>
   );
 };
 
