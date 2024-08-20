@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PaginationProvider } from "../context/PaginationContext";
-import PaginatedTable from "./PaginatedTable";
 import PaginationControls from "./PaginationControls";
 import { listEmployees } from '../redux/employee/actions';
+import BasicTable from './MuiTable';
 
 const EmployeeList = ({ employees, listEmployees }) => {
+
+
+  const handleSubmitData = (data) => {
+    console.log(data)
+  }
+  
+
   useEffect(() => {
     listEmployees();
   }, [listEmployees]);
@@ -15,10 +22,12 @@ const EmployeeList = ({ employees, listEmployees }) => {
     { name: 'last_name', label: 'Apellidos'}
   ];
 
+  const model = 'employee'
+
   return (
-    <PaginationProvider data={employees.data} rowsPerPage={2} fields={employeeFields}>
-      <h1>Employee List</h1>
-      <PaginatedTable />
+    <PaginationProvider data={employees} rowsPerPage={2} fields={employeeFields} model={model}>
+
+      <BasicTable />
       <PaginationControls />
     </PaginationProvider>
   );

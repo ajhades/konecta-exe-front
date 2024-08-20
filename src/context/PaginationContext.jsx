@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext } from 'react';
 const PaginationContext = createContext();
 
 // Proveedor de contexto
-export const PaginationProvider = ({ children, data, rowsPerPage, fields }) => {
+export const PaginationProvider = ({ children, data, rowsPerPage, fields, model }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(data.length / rowsPerPage);
@@ -19,7 +19,7 @@ export const PaginationProvider = ({ children, data, rowsPerPage, fields }) => {
   };
 
   return (
-    <PaginationContext.Provider value={{ currentPage, totalPages, currentData, fields, handlePageChange }}>
+    <PaginationContext.Provider value={{ currentPage, totalPages, currentData, fields, model, handlePageChange }}>
       {children}
     </PaginationContext.Provider>
   );

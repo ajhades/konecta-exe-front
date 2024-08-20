@@ -5,9 +5,7 @@ import {
   DELETE_APPLICATION,
 } from "./types";
 
-const initialState = {
-  data: [],
-};
+const initialState = [];
 
 function applicationReducer(applications = initialState, action) {
   const { type, payload } = action;

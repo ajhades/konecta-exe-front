@@ -21,7 +21,6 @@ const ApplicationsPage = () => {
     <div>
       <h2>Applications</h2>
       <ApplicationList />
-      <button onClick={logout}>Logout</button>
     </div>
   );
 };

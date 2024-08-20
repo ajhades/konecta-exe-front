@@ -11,12 +11,13 @@ function App() {
     // <div className="App">
     <AuthProvider>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/employees" element={<EmployeesPage />} />
-          <Route path="/applications" element={<ApplicationsPage />} />
-        </Routes>
+        <Header>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/employees" element={<EmployeesPage />} />
+            <Route path="/applications" element={<ApplicationsPage />} />
+          </Routes>
+        </Header>
       </Router>
     </AuthProvider>
     // </div>

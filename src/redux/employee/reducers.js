@@ -5,9 +5,7 @@ import {
   DELETE_EMPLOYEE,
 } from "./types";
 
-const initialState = {
-  data: [],
-};
+const initialState = [];
 
 function employeeReducer(employees = initialState, action) {
   const { type, payload } = action;
