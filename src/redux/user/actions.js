@@ -8,6 +8,7 @@ export const loginUser = (user) => async (dispatch) => {
     const res = await User.login(user);
     if (res.success) {
       const token = res.data.token;
+      localStorage.setItem("authToken", token);
       const user = jwtDecode(token);
       console.log("user", user);
       dispatch({ type: LOGIN_USER, payload: user });
@@ -21,8 +22,7 @@ export const loginUser = (user) => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => {
-  return {
-    type: LOGOUT_USER,
-  };
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem("authToken");
+  dispatch({ type: LOGOUT_USER });
 };
