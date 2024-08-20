@@ -17,8 +17,10 @@ const ApplicationList = ({ applications, listApplications }) => {
     { name: 'resume', label: 'Resumen'}
   ];
 
+  const model = 'application';
+
   return (
-    <PaginationProvider data={applications.data} rowsPerPage={2} fields={applicationFields}>
+    <PaginationProvider data={applications} rowsPerPage={2} fields={applicationFields} model={model}>
       <h1>Application List</h1>
       <PaginatedTable />
       <PaginationControls />

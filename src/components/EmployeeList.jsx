@@ -15,8 +15,10 @@ const EmployeeList = ({ employees, listEmployees }) => {
     { name: 'last_name', label: 'Apellidos'}
   ];
 
+  const model = 'employee'
+
   return (
-    <PaginationProvider data={employees.data} rowsPerPage={2} fields={employeeFields}>
+    <PaginationProvider data={employees} rowsPerPage={2} fields={employeeFields} model={model}>
       <h1>Employee List</h1>
       <PaginatedTable />
       <PaginationControls />
